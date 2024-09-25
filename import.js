@@ -1,5 +1,5 @@
 import weaviate from "weaviate-ts-client";
-
+import { readDirSync } from "fs";
 const client = weaviate.client({
   scheme: "http",
   host: "localhost:8080",
