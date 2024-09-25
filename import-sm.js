@@ -11,6 +11,9 @@ const resp = await fetch(
 const data = await resp.json();
 
 const promises = data.map(async (product) => {
+  if (!product.images[0]?.src) {
+    return product;
+  }
   const img = await fetch(product.images[0]?.src);
   if (!img.ok) {
     return product;
