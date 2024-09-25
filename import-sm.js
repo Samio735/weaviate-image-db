@@ -5,7 +5,7 @@ const client = weaviate.client({
   host: "localhost:8080",
 });
 const resp = await fetch(
-  "https://www.stepmode.dz/wp-json/wc/store/products?per_page=20"
+  "https://www.stepmode.dz/wp-json/wc/store/products?per_page=50"
 );
 
 const data = await resp.json();
@@ -29,6 +29,7 @@ const promises = data.map(async (product) => {
       text: product.slug,
     })
     .do();
+  console.log("done2\n");
 });
 
 await Promise.all(promises);
