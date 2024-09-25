@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "sharp": "^0.33.5",
     "weaviate-ts-client": "^2.2.0"
   }
 }
