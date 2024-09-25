@@ -26,7 +26,7 @@ const promises = data.map(async (product) => {
     .withClassName("Images")
     .withProperties({
       image: imgBase64,
-      text: "Image " + i,
+      text: product.name,
     })
     .do();
 });
