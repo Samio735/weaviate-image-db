@@ -5,7 +5,7 @@ const client = weaviate.client({
   host: "localhost:8080",
 });
 const resp = await fetch(
-  "https://www.stepmode.dz/wp-json/wc/store/products?per_page=100"
+  "https://www.stepmode.dz/wp-json/wc/store/products?per_page=10"
 );
 
 const data = await resp.json();
@@ -20,15 +20,15 @@ const promises = data.map(async (product) => {
   }
   const imgBuffer = await img.arrayBuffer();
   const imgBase64 = Buffer.from(imgBuffer).toString("base64");
-
-  await client.data
-    .creator()
-    .withClassName("Images")
-    .withProperties({
-      image: imgBase64,
-      text: product.slug,
-    })
-    .do();
+  console.log("done");
+  //   await client.data
+  //     .creator()
+  //     .withClassName("Images")
+  //     .withProperties({
+  //       image: imgBase64,
+  //       text: product.slug,
+  //     })
+  //     .do();
 });
 
 await Promise.all(promises);
