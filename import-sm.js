@@ -62,7 +62,7 @@ const promises = newList.map(async (product, i) => {
   //   console.log("product : ", product.slug);
   //   console.log("image : ", imgBase64);
 
-  uuid = await images.data.insert({
+  await images.data.insert({
     text: product.slug,
     image: imgBase64,
   });
