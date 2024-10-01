@@ -23,7 +23,7 @@ async function convertAndSearchImage() {
     // Perform image search in Weaviate
     const result = await images.query.nearImage(jpgBuffer, {
       returnProperties: ["text"],
-      limit: 20,
+      limit: 4,
     });
 
     console.log(JSON.stringify(result.objects, null, 2));
