@@ -1,4 +1,5 @@
 import weaviate from "weaviate-ts-client";
+import sharp from "sharp";
 
 const client = weaviate.client({
   scheme: "http",
@@ -43,8 +44,15 @@ const promises = newList.map(async (product, i) => {
   }
   const contentType = img.headers.get("content-type");
   console.log("content type : ", contentType);
+
   const imgBuffer = await img.arrayBuffer();
-  const imgBase64 = Buffer.from(imgBuffer).toString("base64");
+  let imgBase64 = Buffer.from(imgBuffer).toString("base64");
+  if (!contentType.includes("avif")) {
+    const jpgBuffer = await sharp(imgBuffer).jpeg().toBuffer();
+
+    // Convert the .jpg buffer to base64
+    imgBase64 = jpgBuffer.toString("base64");
+  }
   console.log("done");
   const resppp = await client.data
     .creator()
