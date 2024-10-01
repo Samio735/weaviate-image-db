@@ -44,4 +44,4 @@ const promises = list.map(async (product) => {
 
 await Promise.all(promises);
 
-console.log(data.length);
+console.log(list.length);
