@@ -14,15 +14,7 @@ async function clearAllContent() {
     // Delete all objects from each class
     for (const className of classNames) {
       console.log(`Deleting all objects from class: ${className}`);
-      await client.data
-        .deleter()
-        .withClassName(className)
-        .withWhere({
-          operator: "NotEqual",
-          valueString: "placeholder_value_that_doesnt_exist",
-          path: ["id"],
-        })
-        .do();
+      await client.data.deleter().withClassName(className).do();
     }
 
     console.log("All content has been cleared from the database.");
