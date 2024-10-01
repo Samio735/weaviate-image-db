@@ -5,7 +5,7 @@ const client = weaviate.client({
   host: "localhost:8080",
 });
 const list = [];
-for (let page = 1; page < 26; page++) {
+for (let page = 1; page < 2; page++) {
   const resp = await fetch(
     `https://www.stepmode.dz/wp-json/wc/store/products?per_page=50&page=${page}`
   );
