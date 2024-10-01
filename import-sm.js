@@ -33,9 +33,10 @@ const promises = newList.map(async (product, i) => {
   if (i > 30) {
     return;
   }
-  if (!product.images[0]?.src) {
-    return product;
+  if (!product.images[0]?.src || !product.slug) {
+    return;
   }
+
   const img = await fetch(product.images[0]?.src);
   if (!img.ok) {
     return product;
