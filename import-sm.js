@@ -31,14 +31,14 @@ const promises = list.map(async (product) => {
   const imgBuffer = await img.arrayBuffer();
   const imgBase64 = Buffer.from(imgBuffer).toString("base64");
   console.log("done");
-  await client.data
-    .creator()
-    .withClassName("Images")
-    .withProperties({
-      image: imgBase64,
-      text: product.slug,
-    })
-    .do();
+  //   await client.data
+  //     .creator()
+  //     .withClassName("Images")
+  //     .withProperties({
+  //       image: imgBase64,
+  //       text: product.slug,
+  //     })
+  //     .do();
   console.log("done2\n");
 });
 
