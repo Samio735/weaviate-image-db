@@ -3,8 +3,13 @@ import sharp from "sharp";
 
 const client = await weaviate.connectToLocal();
 
-console.log(client);
+// console.log(client);
 
+const myCollection = client.collections.get("Images");
+
+const result = await myCollection.query.fetchObjects();
+
+console.log(JSON.stringify(result, null, 2));
 // const list = [];
 // for (let page = 1; page < 2; page++) {
 //   const resp = await fetch(
@@ -73,3 +78,5 @@ console.log(client);
 // await Promise.all(promises);
 
 // console.log("length list : ", newList.length);
+
+client.close();
