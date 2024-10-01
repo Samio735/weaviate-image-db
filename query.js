@@ -4,7 +4,7 @@ import sharp from "sharp";
 
 // Convert .avif to .jpg
 const avifBuffer = readFileSync(
-  "./461718072_1943601226067581_2543114399004916366_n.webp"
+  "./461252835_552867663840316_8678609409630305422_n.webp"
 );
 
 async function convertAndSearchImage() {
