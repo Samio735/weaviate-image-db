@@ -26,7 +26,6 @@ async function convertAndSearchImage() {
     const result = await images.query.nearImage(jpgBuffer, {
       returnProperties: ["text"],
       limit: 5,
-      targetVector: "image",
     });
 
     console.log(JSON.stringify(result.objects, null, 2));
