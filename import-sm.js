@@ -44,7 +44,7 @@ const promises = newList.map(async (product, i) => {
   const imgBuffer = await img.arrayBuffer();
   const imgBase64 = Buffer.from(imgBuffer).toString("base64");
   console.log("done");
-  await client.data
+  const resppp = await client.data
     .creator()
     .withClassName("Images")
     .withProperties({
@@ -52,6 +52,8 @@ const promises = newList.map(async (product, i) => {
       text: product.slug,
     })
     .do();
+
+  console.log("done1 : ", resppp);
   console.log("done2\n");
 });
 
