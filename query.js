@@ -3,7 +3,7 @@ import weaviate from "weaviate-ts-client";
 import sharp from "sharp";
 
 // Convert .avif to .jpg
-const avifBuffer = readFileSync("./test.avif");
+const avifBuffer = readFileSync("./adrun-noir_1.avif");
 
 async function convertAndSearchImage() {
   try {
