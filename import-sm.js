@@ -21,6 +21,9 @@ for (let page = 1; page < 2; page++) {
 console.log(list.length);
 
 const promises = list.map(async (product, i) => {
+  if (i > 10) {
+    return;
+  }
   if (!product.images[0]?.src) {
     return product;
   }
