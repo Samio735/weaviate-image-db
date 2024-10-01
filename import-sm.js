@@ -57,4 +57,4 @@ const promises = newList.map(async (product, i) => {
 
 await Promise.all(promises);
 
-console.log(newList.length);
+console.log("length list : ", newList.length);
