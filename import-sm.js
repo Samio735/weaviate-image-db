@@ -58,9 +58,9 @@ const promises = newList.map(async (product, i) => {
     // Convert the .jpg buffer to base64
     imgBase64 = jpgBuffer.toString("base64");
   }
-  console.log("done");
-  console.log("product : ", product.slug);
-  console.log("image : ", imgBase64);
+  console.log("start insert");
+  //   console.log("product : ", product.slug);
+  //   console.log("image : ", imgBase64);
 
   uuid = await images.data.insert({
     text: product.slug,
