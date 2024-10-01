@@ -18,9 +18,9 @@ async function clearAllContent() {
         .objectsBatchDeleter()
         .withClassName(className)
         .withWhere({
-          path: ["name"],
+          path: ["title"],
           operator: "Like",
-          valueText: "EphemeralObject*",
+          valueText: "*",
         })
         .do();
     }
