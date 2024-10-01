@@ -7,4 +7,4 @@ const client = weaviate.client({
 
 const schemaRes = await client.schema.getter().do();
 
-console.log(schemaRes);
+console.dir(schemaRes, { depth: null });
