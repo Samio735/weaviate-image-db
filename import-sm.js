@@ -11,7 +11,7 @@ const result = await images.query.fetchObjects();
 
 console.log(JSON.stringify(result, null, 2));
 const list = [];
-for (let page = 1; page < 2; page++) {
+for (let page = 1; page < 27; page++) {
   const resp = await fetch(
     `https://www.stepmode.dz/wp-json/wc/store/products?per_page=50&page=${page}`
   );
@@ -36,9 +36,6 @@ const newList = list.filter((el) => {
 });
 
 const promises = newList.map(async (product, i) => {
-  if (i > 21) {
-    return;
-  }
   if (!product.images[0]?.src || !product.slug) {
     return;
   }
