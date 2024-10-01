@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from "fs";
-import weaviate from "weaviate-ts-client";
+import weaviate from "weaviate-client";
 import sharp from "sharp";
 
 // Convert .avif to .jpg
@@ -14,28 +14,17 @@ async function convertAndSearchImage() {
     const base64Image = jpgBuffer.toString("base64");
 
     // Weaviate client setup
-    const client = weaviate.client({
-      scheme: "http",
-      host: "localhost:8080",
-    });
+    const client = await weaviate.connectToLocal();
+    const images = client.collections.get("Images");
 
     // Perform image search in Weaviate
-    const resImage = await client.graphql
-      .get()
-      .withClassName("Images")
-      .withFields(["image"])
-      .withNearImage({ image: base64Image }) // Use the base64 encoded .jpg image
-      .withLimit(1)
-      .do();
+    const result = await images.query.nearImage(base64Image, {
+      returnProperties: ["text"],
+      limit: 5,
+      // targetVector: 'vector_name' // required when using multiple named vectors
+    });
 
-    // Retrieve and decode the result
-    const resultImage = resImage.data.Get.Images[0].image;
-
-    // Write the result back to a .jpg file
-    writeFileSync("./result.jpg", resultImage, "base64");
-    console.log(
-      "Image search and conversion completed. Result saved as result.jpg"
-    );
+    console.log(JSON.stringify(result.objects, null, 2));
   } catch (error) {
     console.error("Error during image conversion or search:", error);
   }
