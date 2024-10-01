@@ -4,13 +4,23 @@ const client = weaviate.client({
   scheme: "http",
   host: "localhost:8080",
 });
-const resp = await fetch(
-  "https://www.stepmode.dz/wp-json/wc/store/products?per_page=50"
-);
+const list = [];
+for (let page = 1; page < 26; page++) {
+  const resp = await fetch(
+    `https://www.stepmode.dz/wp-json/wc/store/products?per_page=50&page=${page}`
+  );
+  if (!resp.ok) {
+    console.log("error");
+    break;
+  }
+  const data = await resp.json();
 
-const data = await resp.json();
+  list.push(...data);
+}
 
-const promises = data.map(async (product) => {
+console.log(list.length);
+
+const promises = list.map(async (product) => {
   if (!product.images[0]?.src) {
     return product;
   }
