@@ -21,7 +21,7 @@ async function convertAndSearchImage() {
     const result = await images.query.nearImage(base64Image, {
       returnProperties: ["text"],
       limit: 5,
-      // targetVector: 'vector_name' // required when using multiple named vectors
+      targetVector: "image",
     });
 
     console.log(JSON.stringify(result.objects, null, 2));
