@@ -20,7 +20,7 @@ for (let page = 1; page < 2; page++) {
 
 console.log(list.length);
 
-const promises = list.map(async (product) => {
+const promises = list.map(async (product, i) => {
   if (!product.images[0]?.src) {
     return product;
   }
@@ -31,14 +31,14 @@ const promises = list.map(async (product) => {
   const imgBuffer = await img.arrayBuffer();
   const imgBase64 = Buffer.from(imgBuffer).toString("base64");
   console.log("done");
-  //   await client.data
-  //     .creator()
-  //     .withClassName("Images")
-  //     .withProperties({
-  //       image: imgBase64,
-  //       text: product.slug,
-  //     })
-  //     .do();
+  await client.data
+    .creator()
+    .withClassName("Images")
+    .withProperties({
+      image: imgBase64,
+      text: product.slug,
+    })
+    .do();
   console.log("done2\n");
 });
 
