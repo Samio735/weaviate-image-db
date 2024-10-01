@@ -3,7 +3,7 @@ import weaviate from "weaviate-client";
 import sharp from "sharp";
 
 // Convert .avif to .jpg
-const avifBuffer = readFileSync("Screenshot 2024-10-01 at 9.56.12 PM.png");
+const avifBuffer = readFileSync("./Screenshot 2024-10-01 at 9.58.59 PM.png");
 
 async function convertAndSearchImage() {
   try {
