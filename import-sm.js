@@ -52,7 +52,7 @@ const promises = newList.map(async (product, i) => {
 
   const imgBuffer = await img.arrayBuffer();
   let imgBase64 = Buffer.from(imgBuffer).toString("base64");
-  if (!contentType.includes("avif")) {
+  if (contentType.includes("avif")) {
     const jpgBuffer = await sharp(imgBuffer).jpeg().toBuffer();
 
     // Convert the .jpg buffer to base64
