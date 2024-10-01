@@ -3,15 +3,12 @@ import weaviate from "weaviate-client";
 import sharp from "sharp";
 
 // Convert .avif to .jpg
-const avifBuffer = readFileSync("./1_8620m-086.avif");
+const avifBuffer = readFileSync("./1_S237545_BKTN.avif");
 
 async function convertAndSearchImage() {
   try {
     // Convert .avif to .jpg using sharp
     const jpgBuffer = await sharp(avifBuffer).jpeg().toBuffer();
-
-    // save the .jpg buffer to disk
-    writeFileSync("./adrun-noir_1.jpg", jpgBuffer);
 
     // Convert the .jpg buffer to base64
     const base64Image = jpgBuffer.toString("base64");
