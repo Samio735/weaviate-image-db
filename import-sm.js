@@ -54,6 +54,9 @@ const promises = newList.map(async (product, i) => {
     imgBase64 = jpgBuffer.toString("base64");
   }
   console.log("done");
+  console.log("product : ", product.slug);
+  console.log("image : ", imgBase64);
+
   const resppp = await client.data
     .creator()
     .withClassName("Images")
