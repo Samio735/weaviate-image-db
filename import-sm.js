@@ -67,7 +67,6 @@ const promises = newList.map(async (product, i) => {
     image: imgBase64,
   });
 
-  console.log("done1 : ", resppp);
   console.log("done2\n");
 });
 
