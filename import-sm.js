@@ -30,7 +30,7 @@ const newList = list.filter((el) => {
 });
 
 const promises = newList.map(async (product, i) => {
-  if (i > 26) {
+  if (i > 25) {
     return;
   }
   if (!product.images[0]?.src || !product.slug) {
