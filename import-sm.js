@@ -41,6 +41,8 @@ const promises = newList.map(async (product, i) => {
   if (!img.ok) {
     return product;
   }
+  const contentType = img.headers.get("content-type");
+  console.log("content type : ", contentType);
   const imgBuffer = await img.arrayBuffer();
   const imgBase64 = Buffer.from(imgBuffer).toString("base64");
   console.log("done");
