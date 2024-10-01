@@ -16,7 +16,7 @@ async function clearAllContent() {
       console.log(`Deleting all objects from class: ${className}`);
       await client.batch
         .objectsBatchDeleter()
-        .withClassName("EphemeralObject")
+        .withClassName(className)
         .withWhere({
           path: ["name"],
           operator: "Like",
