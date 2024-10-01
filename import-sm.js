@@ -20,7 +20,16 @@ for (let page = 1; page < 2; page++) {
 
 console.log(list.length);
 
-const promises = list.map(async (product, i) => {
+// remove duplicates
+
+const seen = new Set();
+const newList = list.filter((el) => {
+  const duplicate = seen.has(el.id);
+  seen.add(el.id);
+  return !duplicate;
+});
+
+const promises = newList.map(async (product, i) => {
   if (i > 30) {
     return;
   }
@@ -47,4 +56,4 @@ const promises = list.map(async (product, i) => {
 
 await Promise.all(promises);
 
-console.log(list.length);
+console.log(newList.length);
